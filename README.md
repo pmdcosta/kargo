@@ -11,3 +11,6 @@
 
 ##Deploy!
 - `ansible-playbook -u core -e ansible_ssh_user=core  -b --become-user=root -i inventory/inventory.cfg cluster.yml` 
+
+##Additional docs
+- https://docs.kubespray.io/
