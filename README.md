@@ -1,25 +1,13 @@
-
-
-![Kubespray Logo](http://s9.postimg.org/md5dyjl67/kubespray_logoandkubespray_small.png)
+# Kube Spray
 
 ##Deploy a production ready kubernetes cluster
+- Add the adrress of CoreOS hosts to the inventory file
+- Change the master/etcd configuration to match the desired state
+- Special attention to the `CHANGEME` configs
 
-- Can be deployed on **AWS, GCE, OpenStack or Baremetal**
-- **High available** cluster
-- **Composable** (Choice of the network plugin for instance)
-- Support most popular **Linux distributions**
-- **Continuous integration tests**
+##Before Running on CoreOS
+- Uncomment the variable `ansible_python_interpreter` in the file `inventory/group_vars/all.yml`
+- Run `ansible-playbook -u core -e ansible_ssh_user=core  -b --become-user=root -i inventory/inventory.cfg coreos-bootstrap.yml`
 
-
-To deploy the cluster you can use :
-
-* [**kargo-cli**](https://github.com/kubespray/kargo-cli)
-* **vagrant** by simply running `vagrant up`
-* **Ansible** usual commands
-
-A complete **documentation** can be found [**here**](https://docs.kubespray.io)
-
-If you have questions, you can [invite yourself](https://slack.kubespray.io/) to **chat** with us on Slack! [![SlackStatus](https://slack.kubespray.io/badge.svg)](https://kubespray.slack.com)
-
-[![Build Status](https://travis-ci.org/kubespray/kargo.svg)](https://travis-ci.org/kubespray/kargo) </br>
-CI tests sponsored by Google (GCE), and [teuto.net](https://teuto.net/) for OpenStack.
+##Deploy!
+- `ansible-playbook -u core -e ansible_ssh_user=core  -b --become-user=root -i inventory/inventory.cfg cluster.yml` 

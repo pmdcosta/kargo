@@ -7,7 +7,7 @@ local_release_dir: "/tmp/releases"
 
 # Uncomment this line for CoreOS only.
 # Directory where python binary is installed
-# ansible_python_interpreter: "/opt/bin/python"
+ansible_python_interpreter: "/opt/bin/python"
 
 # This is the group that the cert creation scripts chgrp the
 # cert files to. Not really changable...
@@ -17,13 +17,13 @@ kube_cert_group: kube-cert
 kube_log_level: 2
 
 # Users to create for basic auth in Kubernetes API via HTTP
-kube_api_pwd: "changeme"
+kube_api_pwd: "CHANGEME"
 kube_users:
   kube:
     pass: "{{kube_api_pwd}}"
     role: admin
   root:
-    pass: "changeme"
+    pass: "CHANGEME"
     role: admin
 
 # Kubernetes cluster name, also will be used as DNS domain
@@ -52,7 +52,8 @@ cluster_name: cluster.local
 # access_ip: 1.1.1.1
 
 # Choose network plugin (calico, weave or flannel)
-kube_network_plugin: flannel
+kube_network_plugin: weave
+weave_password: CHANGEME
 
 # Kubernetes internal network for services, unused block of space.
 kube_service_addresses: 10.233.0.0/18
